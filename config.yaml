@@ -1,0 +1,32 @@
+model_params:
+  im_channels : 3
+  im_height : 216
+  im_width: 176
+  down_channels : [32, 64, 128, 256]
+  mid_channels : [256, 256, 128]
+  down_sample : [True, True, False]
+  time_emb_dim : 128
+  num_down_layers : 2
+  num_mid_layers : 2
+  num_up_layers : 2
+  num_heads : 4
+
+train_params:
+  epochs: 10000
+  modelpath: 'models'
+  checkpoint_latest: 'latest.pth'
+  checkpoint_epoch: 1
+  lr: 0.0001
+  percentage_image: 0.001
+
+noise_params:
+  beta_min: 0.0001
+  beta_max: 0.02
+  timesteps: 200
+
+data_params:
+  batch: 8
+  datapath: 'data/celeb-dataset/img_align_celeba/img_align_celeba'
+
+
+  
