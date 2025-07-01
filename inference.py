@@ -32,7 +32,7 @@ class Inference:
 
 
     def generate(self):
-        device = torch.device('cuda:1' if torch.cuda.is_available() else 'cpu')
+        device = torch.device('cuda:2' if torch.cuda.is_available() else 'cpu')
         xt = torch.randn(size=(self.batch, self.channel, self.h, self.w)).to(device)
         self.model.to(device)
 
