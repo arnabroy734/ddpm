@@ -28,7 +28,7 @@ def ddp_setup(rank, world_size):
 
 def get_dataloader(batch: int, height: int, width: int, trainpath: str):
     data = CelebDataset(height, width, trainpath)
-    loader = DataLoader(data, batch_size=batch, sampler=DistributedSampler(data))
+    loader = DataLoader(data, batch_size=batch, sampler=DistributedSampler(data), pin_memory=False)
     return loader
 
 class Trainer:

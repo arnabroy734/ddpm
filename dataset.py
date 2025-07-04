@@ -16,6 +16,9 @@ def prepare_train_data(datapath, trainpath, num_train_sample):
         np.random.shuffle(all_files)
         for i in range(min(num_train_sample, len(all_files))):
             shutil.copy(all_files[i], trainpath/all_files[i].name)
+        print(f"{num_train_sample} samples copied to {trainpath}")
+    else:
+        print(f"Train path {trainpath} already exists. No samples copied.")
             
 
 class CelebDataset(Dataset):

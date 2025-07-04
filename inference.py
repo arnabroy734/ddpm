@@ -12,7 +12,7 @@ class Inference:
         try:
             checkpoint = torch.load(modelfolder/config['train_params']['checkpoint_latest'])
             self.model.load_state_dict(checkpoint['model_state_dict'])
-            print(f"Model loaded from {checkpoint['epoch']} epoch checkpoint ..")
+            print(f"Model loaded successfully ..")
         except Exception as e:
             raise ValueError("No checkpoint found ..")
         
@@ -32,7 +32,7 @@ class Inference:
 
 
     def generate(self):
-        device = torch.device('cuda:2' if torch.cuda.is_available() else 'cpu')
+        device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
         xt = torch.randn(size=(self.batch, self.channel, self.h, self.w)).to(device)
         self.model.to(device)
 
@@ -51,8 +51,8 @@ class Inference:
                 if torch.sum(torch.isnan(x0)):
                     print(f'NaN at {i+1} th timestep: x0')
                     break
-                if (i+1)%100 == 0:
-                    print(f"{i+1} iteration complete")
+                if (self.T-i+1)%100 == 0:
+                    print(f"{self.T-i+1} timestep complete")
         return xt
         
 

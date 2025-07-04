@@ -1,7 +1,7 @@
 model_params:
   im_channels : 3
-  im_height : 216
-  im_width: 176
+  im_height : 128
+  im_width: 128
   down_channels : [32, 32, 64, 128, 256, 512]
   mid_channels : [512, 512, 512, 512, 256]
   down_sample : [True, False, True, False, True]
@@ -12,17 +12,17 @@ model_params:
   num_heads : 4
 
 train_params:
-  epochs: 2
+  epochs: 5000
   modelpath: 'models'
   checkpoint_latest: 'latest.pth'
-  checkpoint_epoch: 1
-  lr: 0.0001
-  num_training_samples: 1024
+  checkpoint_epoch: 5
+  lr: 0.0003
+  num_training_samples: 5000
 
 noise_params:
   beta_min: 0.0001
   beta_max: 0.02
-  timesteps: 1000
+  timesteps: 700
 
 data_params:
   batch: 8
